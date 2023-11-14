@@ -75,7 +75,7 @@
 </picture>
 
 
-Его схема
+Схема ресурса
 
 <picture>
 
@@ -96,6 +96,8 @@
 
  <img alt="image.png" src="https://github.com/Evgeny-54/UrfuAILab2/blob/main/image.png">
 </picture>
+
+key.json - файл с ключом для api
 
 ```python
 
@@ -142,6 +144,11 @@ while i <= len(mon):
 
  <img alt="unity.png" src="https://github.com/Evgeny-54/UrfuAILab2/blob/main/unity.png">
 </picture>
+
+Для работы скрипта следует скачать звуковые файлы из папки Sound
+
+
+API_KEY - ключ api
 
 ```c#
 using System.Collections;
@@ -238,6 +245,6 @@ public class NewBehaviourScript : MonoBehaviour
 
 ## Выводы
 
-В ходе выполнения данной лабароторной работы, я узнал о программе anaconda и научился в ней работать.
+В ходе выполнения данной лабароторной работы, я узнал как работать с api google sheets и научился работать с ним в Unity
 
 
