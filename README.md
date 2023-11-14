@@ -68,50 +68,68 @@
 </picture>
 
 #### Ресурс из Anno 1404
-Для выполнения нашей задачи мы возьмем ресурс "cпеции", который вырабатывается при своевременном поливе земли на Восточной колонии. 
+Для выполнения нашей задачи мы возьмем ресурс "cпеции", который вырабатывается при своевременном поливе земли на Восточной колонии. Используется спросом у горожан. Возможна продажа и покупка у других игроков. Максимальная производительность плантации 300 единиц.
 
 <picture>
-
  <img alt="spices.jpg" src="https://github.com/Evgeny-54/UrfuAILab2/blob/main/spices.jpg">
 </picture>
 
 
+Его схема
 
-```c#
+<picture>
+
+ <img alt="shema.jpg" src="https://github.com/Evgeny-54/UrfuAILab2/blob/main/shema.jpg">
+</picture>
 
 
 
-```
 
 
 
 
 ## Задание 2
 С помощью скрипта на языке Python заполните google-таблицу данными, описывающими выбранную игровую переменную в выбранной игре (в качестве таких переменных может выступать игровая валюта, ресурсы, здоровье и т.д.). Средствами google-sheets визуализируйте данные в google-таблице (постройте график, диаграмму и пр.) для наглядного представления выбранной игровой величины.
+
+### Решение задачи 2
 <picture>
 
- <img alt="point2.png" src="https://github.com/Evgeny-54/UrfuAI/blob/main/point2.png">
+ <img alt="image.png" src="https://github.com/Evgeny-54/UrfuAILab2/blob/main/image.png">
 </picture>
 
-```c#
+```python
 
-using UnityEngine;
-
-public class Hello : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log(" Hello World");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-}
-
+import gspread
+import numpy as np
+gc = gspread.service_account(filename='key.json')
+sh = gc.open("unityAI2")
+#Максимальная выработка плантации
+price = 300
+#Влажность почвы
+water = 0.99
+mon = list(range(1,23))
+i = 0
+while i <= len(mon):
+    i += 1
+    if i == 0:
+        continue
+    else:
+        t = np.random.randint(5,9) / 100
+        #Если земля сухая, то полить
+        if water-t <= 0:
+            water = 0.99
+        #Высыхание почвы
+        water-=t
+        #Выработка
+        product = round(price*water)
+        tempInf = round(water, 2)
+        tempInf = str(tempInf)
+        tempInf = tempInf.replace('.',',')
+        sh.sheet1.update(('A' + str(i)), str(i))
+        sh.sheet1.update(('B' + str(i)), product)
+        sh.sheet1.update(('C' + str(i)), str(tempInf))
+        
+        print(tempInf)
 
 ```
 ## Задание 3
