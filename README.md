@@ -178,16 +178,19 @@ public class NewBehaviourScript : MonoBehaviour
 // Update is called once per frame
 	void Update()
 	{
+		// Если производительность больше 100
 		if (dataSet["Mon_" + i.ToString()] > 100 & statusStart == false & i != dataSet.Count)
 		{
 			StartCoroutine(PlaySelectAudioGood());
 			Debug.Log(dataSet["Mon_" + i.ToString()]);
 		}
+		// Если производительность больше или равно 60
 		if (dataSet["Mon_" + i.ToString()] >= 60 & dataSet["Mon_" + i.ToString()] < 100 & statusStart == false & i != dataSet.Count)
 		{
 			StartCoroutine(PlaySelectAudioNormal());
 			Debug.Log(dataSet["Mon_" + i.ToString()]);
 		}
+		// Если производительность меньше 60
 		if (dataSet["Mon_" + i.ToString()] < 60 & statusStart == false & i != dataSet.Count)
 		{
 			StartCoroutine(PlaySelectAudioBad());
